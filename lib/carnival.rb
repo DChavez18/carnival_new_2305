@@ -14,4 +14,20 @@ class Carnival
     return nil if @rides.empty?
     @rides.max_by { |ride| ride.rider_log.values.sum }
   end
+
+  def most_profitable_ride
+    return nil if @rides.empty?
+  
+    max_revenue = @rides.first.total_revenue
+    profitable_ride = @rides.first
+  
+    @rides.each do |ride|
+      if ride.total_revenue > max_revenue
+        max_revenue = ride.total_revenue
+        profitable_ride = ride
+      end
+    end
+  
+    profitable_ride
+  end
 end
