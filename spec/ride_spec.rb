@@ -19,6 +19,7 @@ RSpec.describe Ride do
   end
 
   it "can add visitor to a rider_log by boarding the visitor" do
+    ride1 = Ride.new({ name: 'Carousel', min_height: 24, admission_fee: 1, excitement: :gentle })
     visitor1 = Visitor.new('Bruce', 54, '$10')
     visitor2 = Visitor.new('Tucker', 36, '$5')
 
@@ -26,7 +27,7 @@ RSpec.describe Ride do
     visitor2.add_preference(:gentle)
     ride1.board_rider(visitor1)
     ride1.board_rider(visitor2)
-    expect(ride1.rider_log).to eq({})
+    expect(ride1.rider_log.first).to eq([visitor1, 1])
   end
 
 end
