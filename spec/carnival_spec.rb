@@ -119,6 +119,6 @@ RSpec.describe Carnival do
 
     expect(carnival.summary).to be_a Hash
     expect(carnival.summary.keys.first).to eq(:visitor_count)
-    # expectit(carniva)
+    expect(carnival.summary[:visitor_count]).to eq(3)
   end
 end
