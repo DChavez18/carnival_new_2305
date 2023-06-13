@@ -70,3 +70,31 @@ class Carnival
     @rides.flat_map { |ride| ride.rider_log.keys }.uniq.size
   end
 end
+
+
+# {
+#   visitor_count: integer, 
+#   revenue_earned: integer, 
+#   visitors: [
+#     {
+#       visitor: Visitor object,
+#       favorite_ride: Ride object,
+#       total_money_spent: integer
+#     }, 
+#     {
+#       visitor: Visitor object,
+#       favorite_ride: Ride object,
+#       total_money_spent: integer
+#     }],
+#   rides: [
+#     {
+#       ride: Ride object,
+#       riders: [Visitor objects],
+#       total_revenue: integer
+#     },
+#     {
+#       ride: Ride object,
+#       riders: [Visitor objects],
+#       total_revenue: integer
+#     }]
+#   }
