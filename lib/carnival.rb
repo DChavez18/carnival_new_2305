@@ -1,9 +1,11 @@
 class Carnival
   attr_reader :duration,
               :rides,
+              :riders
   def initialize(duration)
     @duration = duration
     @rides = []
+    @riders = []
   end
 
   def add_ride(ride)
@@ -35,16 +37,36 @@ class Carnival
     {
       visitor_count: visitor_count,
       revenue_earned: total_revenue,
-      visitors: [],
-      rides: []
+      visitors: visitors_summary,
+      rides: rides_summary
     }
   end
 
+  def visitors_summary
+    @rides.flat_map { |ride| ride.rider_log.keys }.uniq.map do |visitor|
+      {
+        visitor: visitor,
+        favorite_ride: visitor.favorite_ride,
+        total_money_spent: visitor.total_money_spent
+      }
+    end
+  end
+
+  def rides_summary
+    @rides.map do |ride|
+      {
+        ride: ride,
+        riders: ride.rider_log.keys,
+        total_revenue: ride.total_revenue
+      }
+    end
+  end
+  
   def total_revenue
     @rides.reduce(0) { |sum, ride| sum + ride.total_revenue }
   end
 
   def visitor_count
-    @rides.sum { |ride| ride.riders.size }
+    @rides.flat_map { |ride| ride.rider_log.keys }.uniq.size
   end
 end
