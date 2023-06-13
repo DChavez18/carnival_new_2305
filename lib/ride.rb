@@ -17,12 +17,9 @@ class Ride
 
   def board_rider(visitor)
     if visitor.height >= min_height && visitor.preferences.include?(excitement)
-      # visitor.spending_money -= admission_fee
       rider_log[visitor] ||= 0
       rider_log[visitor] += 1
+      visitor.spending_money -= admission_fee
     end
   end
-
-
-  
 end
