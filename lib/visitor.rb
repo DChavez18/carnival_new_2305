@@ -20,4 +20,9 @@ class Visitor
     return false if height < height_requirement
     return true if height >= height_requirement
   end
+
+  #  def favorite_ride
+  #   rides = rider_log.keys
+  #   rides.max_by { |ride| rider_log[ride] }
+  # end
 end

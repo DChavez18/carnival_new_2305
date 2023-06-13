@@ -70,10 +70,10 @@ class Carnival
     @rides.flat_map { |ride| ride.rider_log.keys }.uniq.size
   end
 
-  def favorite_ride
-    rides = rider_log.keys
-    rides.max_by { |ride| rider_log[ride] }
-  end
+  # def favorite_ride
+  #   rides = rider_log.keys
+  #   rides.max_by { |ride| rider_log[ride] }
+  # end
 end
 
 
