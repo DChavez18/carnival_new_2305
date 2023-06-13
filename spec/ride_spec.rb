@@ -18,4 +18,15 @@ RSpec.describe Ride do
     expect(ride1.total_revenue).to eq(0)
   end
 
+  it "can add visitor to a rider_log by boarding the visitor" do
+    visitor1 = Visitor.new('Bruce', 54, '$10')
+    visitor2 = Visitor.new('Tucker', 36, '$5')
+
+    visitor1.add_preference(:gentle)
+    visitor2.add_preference(:gentle)
+    ride1.board_rider(visitor1)
+    ride1.board_rider(visitor2)
+    expect(ride1.rider_log).to eq({})
+  end
+
 end
